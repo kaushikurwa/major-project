@@ -84,14 +84,22 @@ YOLO11n was chosen for its real-time localization capability, critical for deriv
 
 ## Live Diagnostic Interface
 
-<p align="center">
-  <img src="photo_vid/live_1.jpeg" alt="Edible Fruit Detection" width="45%"/>
-  &nbsp;&nbsp;
-  <img src="photo_vid/live_2.jpeg" alt="Rejected Fruit Detection" width="45%"/>
-</p>
+<table align="center" width="90%">
+  <tr>
+    <td align="center" width="50%">
+      <img src="photo_vid/live_1.jpeg" alt="Rotten Fruit — RIGHT bin" width="100%"/>
+    </td>
+    <td align="center" width="50%">
+      <img src="photo_vid/live_2.jpeg" alt="Half-Ripe Fruit — LEFT bin" width="100%"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><sub>ROTTEN | 86% → RIGHT bin</sub></td>
+    <td align="center"><sub>HALF_RIPE | 87% → LEFT bin</sub></td>
+  </tr>
+</table>
 
-A Flask-based web interface streams real-time YOLO11n detections with bounding boxes, confidence scores, pixel-to-mm coordinates, and bin assignment, which is accessible from any browser on the same network.
-
+A Flask-based web interface streams real-time YOLO11n detections with bounding boxes, confidence scores, pixel-to-mm coordinates, and bin assignment, accessible from any browser on the same network.
 ---
 
 ## Hardware Stack
@@ -164,13 +172,29 @@ Reach = √(X_mm² + Y_mm²)
 
 ---
 
+---
+
 ## CAD Design
 
 <p align="center">
-  <img src="photo_vid/cad_new.jpeg" alt="3D CAD Model" width="70%"/>
+  <img src="photo_vid/cad_new.jpeg" alt="3D CAD Model" width="35%"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="photo_vid/Screenshot 2026-06-26 160552.png" alt="Fusion 360 CAD Assembly" width="55%"/>
 </p>
 
-The robot features a 4-wheel drive chassis with a rectangular electronics enclosure housing the Raspberry Pi 5, Arduino Uno, motor drivers, and battery pack. The 3-DOF arm mounts on top with a dual-compartment sorting bin.
+The full assembly was designed in **Autodesk Fusion 360**, comprising the 4-wheel drive chassis, electronics enclosure, dual-compartment sorting bin, 3-DOF arm links, and parallel-jaw gripper. Each component was parametrically modelled and assembled with joint constraints before fabrication.
+
+---
+
+## Fabrication & Iteration
+
+<p align="center">
+  <img src="photo_vid/6.webp" alt="First fabricated robot prototype" width="45%"/>
+  &nbsp;&nbsp;
+  <img src="photo_vid/fin1.jpeg" alt="Final robot — front view" width="45%"/>
+</p>
+
+The first fabricated prototype (left) validated the chassis geometry and arm reach. During initial pick trials, the **end effector servo (MG90S) failed under the load of a tomato**, stripping the gear train. The gripper assembly was redesigned with reinforced mounts and a revised finger geometry, resulting in the final build (right) which completed all pick-and-sort trials successfully.
 
 ---
 
@@ -195,30 +219,30 @@ A full simulation environment was built in **Gazebo (Classic)** with a URDF robo
   <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.18.49 PM (1).jpeg" alt="Gazebo simulation with LiDAR fan" width="80%"/>
 </p>
 
-The robot was spawned in a custom orchard world with cylindrical tree obstacles and a tomato sphere. The blue LiDAR fan shows the 2D laser scan actively sweeping the environment.
+The robot was spawned in a custom orchard world with cylindrical tree obstacles and a tomato sphere. The blue LiDAR fan indicates that the 2D laser scan is actively sweeping the environment.
 
 ---
 
 ### Tomato Detection in Simulation
 
 <p align="center">
-  <img src="photo_vid/YOUR_CAMERA_FEED_1.jpeg" alt="Camera feed with tomato detection" width="45%"/>
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.26.36 PM (1).jpeg" alt="Camera feed with tomato detection" width="45%"/>
   &nbsp;&nbsp;
-  <img src="photo_vid/YOUR_CAMERA_FEED_2.jpeg" alt="Robot approaching tomato" width="45%"/>
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.26.36 PM.jpeg" alt="Robot approaching tomato" width="45%"/>
 </p>
 
-The `tomato_vision_node` processes the `/camera/image_raw` topic using HSV masking and circularity filtering. When a tomato is detected (radius ≥ 45px), the `tomato_control_node` publishes velocity commands to `/cmd_vel`, steering the robot toward the target until the area threshold is met (≥ 6000px²) and the robot stops.
+The `tomato_vision_node` processes the `/camera/image_raw` topic using HSV masking and circularity filtering. When a tomato is detected (radius ≥ 45px), the `tomato_control_node` publishes velocity commands to `/cmd_vel`, steering the robot toward the target until the area threshold is met (≥ 6000px²) and the robot comes to a stop.
 
 ---
 
 ### SLAM Map Building
 
 <p align="center">
-  <img src="photo_vid/YOUR_RVIZ_TF.jpeg" alt="RViz robot model with TF tree" width="30%"/>
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.18.48 PM.jpeg" alt="RViz robot model with TF tree" width="30%"/>
   &nbsp;&nbsp;
-  <img src="photo_vid/YOUR_RVIZ_SLAM_1.jpeg" alt="SLAM map top-down view" width="30%"/>
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.18.49 PM.jpeg" alt="SLAM map top-down view" width="30%"/>
   &nbsp;&nbsp;
-  <img src="photo_vid/YOUR_RVIZ_SLAM_2.jpeg" alt="SLAM map 3D view with laser scan" width="30%"/>
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.18.47 PM.jpeg" alt="SLAM map 3D view with laser scan" width="30%"/>
 </p>
 
 **slam_toolbox** (online asynchronous mode) builds an occupancy grid in real time from the simulated LiDAR. The red laser scan overlay and the TF tree confirm all coordinate frames (`odom → base_footprint → laser`) are correctly bridged between Gazebo and ROS2.
@@ -228,10 +252,21 @@ The `tomato_vision_node` processes the `/camera/image_raw` topic using HSV maski
 ### Terminal Output
 
 <p align="center">
-  <img src="photo_vid/YOUR_TERMINAL.jpeg" alt="ROS2 terminal output showing nodes" width="80%"/>
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.18.50 PM.jpeg" alt="ROS2 terminal output showing nodes" width="80%"/>
 </p>
 
 Four terminal panes show the full system running simultaneously: the `ros_gz_bridge`, `tomato_vision_node` reporting centroids and radii, `tomato_control_node` logging STOPPED events when the area threshold is reached, and `slam_toolbox` initializing with CeresSolver.
+---
+
+## Project Poster - EXPRO 2025–26
+
+<p align="center">
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 6.21.49 PM.jpeg" alt="EXPRO 2025-26 Project Poster" width="85%"/>
+</p>
+
+Presented at **EXPRO 2025–26**, the annual project exposition at NMAM Institute of Technology, Nitte.
+
+---
 ## Results Summary
 
 - **YOLO11n mAP@0.5:** 0.891 across 6 classes
