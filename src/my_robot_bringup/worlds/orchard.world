@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+    <world name="orchard">
+        <include><uri>model://ground_plane</uri></include>
+        <include><uri>model://sun</uri></include>
+        
+        <model name="tree1">
+  <static>true</static>
+  <pose>0 0 2 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><cylinder><radius>1</radius><length>4</length></cylinder></geometry>
+    </visual>
+    <collision name="collision">
+      <geometry><cylinder><radius>1</radius><length>4</length></cylinder></geometry>
+    </collision>
+  </link>
+</model>
+
+<model name="tree2">
+  <static>true</static>
+  <pose>4 0 2 0 0 0</pose>
+  <link name="link">
+    <visual name="visual">
+      <geometry><cylinder><radius>1</radius><length>4</length></cylinder></geometry>
+    </visual>
+    <collision name="collision">
+      <geometry><cylinder><radius>1</radius><length>4</length></cylinder></geometry>
+    </collision>
+  </link>
+</model>
+
+        <model name="tomato1">
+            <static>true</static>
+            <pose>-1.5 0 0.05 0 0 0</pose>
+            <link name="link">
+                <visual name="visual">
+                    <geometry><sphere><radius>0.05</radius></sphere></geometry>
+                    <material>
+                        <ambient>0.8 0.0 0.0 1</ambient>
+                        <diffuse>0.8 0.0 0.0 1</diffuse>
+                        <specular>0.1 0.1 0.1 1</specular>
+                    </material>
+                </visual>
+                <collision name="collision">
+                    <geometry><sphere><radius>0.05</radius></sphere></geometry>
+                </collision>
+            </link>
+        </model>
+    </world>
+</sdf>

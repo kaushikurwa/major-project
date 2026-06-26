@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="body_color" value="Gazebo/Silver" />
+    <xacro:property name="wheel_color" value="Gazebo/Black" />
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+  <mu1>0.5</mu1>
+  <mu2>0.5</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="right_wheel2_1">
+  <material>${wheel_color}</material>
+  <mu1>4.0</mu1>
+  <mu2>4.0</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="right_wheel1_1">
+  <material>${wheel_color}</material>
+  <mu1>4.0</mu1>
+  <mu2>4.0</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="left_wheel1_1">
+  <material>${wheel_color}</material>
+  <mu1>4.0</mu1>
+  <mu2>4.0</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="left_wheel2_1">
+  <material>${wheel_color}</material>
+  <mu1>4.0</mu1>
+  <mu2>4.0</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo>
+  <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+    <left_joint>left_wheel1_base_link_joint</left_joint>
+    <right_joint>right_wheel1_base_link_joint</right_joint>
+
+    <wheel_separation>0.1838</wheel_separation>   
+    <wheel_diameter>0.065</wheel_diameter>       
+    <command_topic>/cmd_vel</command_topic>
+
+    <odometry_topic>/odom</odometry_topic>
+    <publish_odom>true</publish_odom>
+    <publish_odom_tf>true</publish_odom_tf>
+    <robot_base_frame>base_footprint</robot_base_frame>
+    <max_wheel_torque>40</max_wheel_torque>
+    <max_wheel_acceleration>0.5</max_wheel_acceleration>
+  </plugin>
+</gazebo>
+
+</robot>

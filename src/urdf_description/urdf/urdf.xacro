@@ -1,0 +1,235 @@
+<?xml version="1.0" ?>
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="materials.xacro" />
+<xacro:include filename="camera.xacro" />
+<xacro:include filename="drive_control.xacro" />
+<xacro:include filename="lidar.xacro" />
+
+<link name="base_footprint"/>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-9.068721438447272e-07 0.016818956769741884 0.13757244036998353" rpy="0 0 0"/>
+    <mass value="16.129870302720548"/>
+    <inertia ixx="0.106544" iyy="0.090512" izz="0.122735" ixy="-2e-06" iyz="-0.015935" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="cam_link_1">
+  <inertial>
+    <origin xyz="0.00029040885549365706 -0.0010028948136634602 -0.00862499966472527" rpy="0 0 0"/>
+    <mass value="0.0029877236299923403"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0005 0.09925 -0.164544" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/cam_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="green"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0005 0.09925 -0.164544" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/cam_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel1_1">
+  <inertial>
+    <origin xyz="0.004999999999999963 2.695303707445085e-07 3.8435314280577115e-07" rpy="0 0 0"/>
+    <mass value="0.300562059655161"/>
+    <inertia ixx="0.000185" iyy="9.5e-05" izz="9.5e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.09 0.091905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/left_wheel1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.09 0.091905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/left_wheel1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel2_1">
+  <inertial>
+    <origin xyz="0.0049999999999999906 -2.6953037318699913e-07 3.8435314281271005e-07" rpy="0 0 0"/>
+    <mass value="0.300562059655161"/>
+    <inertia ixx="0.000185" iyy="9.5e-05" izz="9.5e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.09 -0.096905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/left_wheel2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.09 -0.096905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/left_wheel2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel1_1">
+  <inertial>
+    <origin xyz="-0.004999999999999935 2.6953037327026586e-07 3.8435314292373235e-07" rpy="0 0 0"/>
+    <mass value="0.300562059655161"/>
+    <inertia ixx="0.000185" iyy="9.5e-05" izz="9.5e-05" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.09 0.091905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/right_wheel1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="0.09 0.091905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/right_wheel1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel2_1">
+  <inertial>
+    <origin xyz="-0.004999999999999963 -2.6953037078614184e-07 3.8435314279883226e-07" rpy="0 0 0"/>
+    <mass value="0.3005620596551611"/>
+    <inertia ixx="0.000185" iyy="9.5e-05" izz="9.5e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.09 -0.096905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/right_wheel2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="0.09 -0.096905 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/right_wheel2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="armbase_link_1">
+  <inertial>
+    <origin xyz="0.00022108018193362611 0.00038730930499579486 0.027399267414813827" rpy="0 0 0"/>
+    <mass value="0.5767027085005034"/>
+    <inertia ixx="0.000314" iyy="0.000427" izz="0.000258" ixy="6e-06" iyz="-2e-06" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.044 -0.162294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/armbase_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.044 -0.162294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/armbase_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm1_link_1">
+  <inertial>
+    <origin xyz="0.007283258896485331 -0.04475419067069337 0.031049988379295457" rpy="0 0 0"/>
+    <mass value="0.5865146005990974"/>
+    <inertia ixx="0.000934" iyy="0.000342" izz="0.00063" ixy="-2.9e-05" iyz="0.000397" ixz="1.9e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010191 0.042967 -0.209591" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/arm1_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010191 0.042967 -0.209591" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file:///home/kaushik/major_ws/src/urdf_description/meshes/arm1_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="armbase_link_base_link" type="continuous">
+  <origin xyz="0.0 -0.044 0.162294" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="armbase_link_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
+</joint>
+
+<joint name="arm1_link_armbase_link" type="revolute">
+  <origin xyz="-0.010191 0.001033 0.047297" rpy="0 0 0"/>
+  <parent link="armbase_link_1"/>
+  <child link="arm1_link_1"/>
+  <axis xyz="0.9988 -0.048965 -0.0"/>
+  <limit upper="0.349066" lower="-2.181662" effort="100" velocity="100"/>
+</joint>
+
+<joint name="cam_link_base_link_joint" type="fixed">
+  <origin xyz="-0.0005 -0.09925 0.164544" rpy="0 0 -1.5708"/>
+  <parent link="base_link"/>
+  <child link="cam_link_1"/>
+</joint>
+
+<joint name="base_footprint_to_base_link_joint" type="fixed">
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+</joint>
+
+
+<joint name="left_wheel1_base_link_joint" type="continuous">
+  <origin xyz="0.09 -0.091905 0.035" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel1_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="left_wheel2_base_link_joint" type="continuous">
+  <origin xyz="0.09 0.096905 0.035" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel2_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="right_wheel1_base_link_joint" type="continuous">
+  <origin xyz="-0.09 -0.091905 0.035" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel1_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="right_wheel2_base_link_joint" type="continuous">
+  <origin xyz="-0.09 0.096905 0.035" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel2_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+</robot>
