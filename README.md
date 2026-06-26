@@ -192,7 +192,7 @@ A full simulation environment was built in **Gazebo (Classic)** with a URDF robo
 ### Robot Model & LiDAR Scan
 
 <p align="center">
-  <img src="photo_vid/YOUR_GAZEBO_LIDAR.jpeg" alt="Gazebo simulation with LiDAR fan" width="80%"/>
+  <img src="photo_vid/WhatsApp Image 2026-06-26 at 3.18.49 PM (1).jpeg" alt="Gazebo simulation with LiDAR fan" width="80%"/>
 </p>
 
 The robot was spawned in a custom orchard world with cylindrical tree obstacles and a tomato sphere. The blue LiDAR fan shows the 2D laser scan actively sweeping the environment.
