@@ -29,12 +29,37 @@ The robot:
 
 ##  Demo & Model Weights
 
-> 📦 Full demo videos, dataset, and model weights are hosted on HuggingFace:
+> 📦 Full demo videos, dataset, and model weights are hosted on HuggingFace inside Files and versions with different folders:
 >
 > **[🤗 huggingface.co/kaushikurwa](https://huggingface.co/kaushikurwa)**
 
 ---
 
+---
+
+## 📄 Research & IP
+
+<table align="center" width="90%">
+  <tr>
+    <td width="50%" align="center">
+      <h3>🔒 Patent Filed</h3>
+      <b>Title:</b> Vision-Guided Fallen Fruit Collection Robot for Orchard Health Monitoring<br><br>
+      <b>Applicant:</b> NITTE (Deemed to be University)<br>
+      <b>Inventors:</b> Aditya Suresh Kumar · Murali Krish Karkera · Nihal E Praveen · P Kaushik<br>
+      <b>Filed via:</b> IPR Cell, NITTE Deemed to be University<br>
+      <b>Status:</b> Patent Application Submitted · Publication Requested
+    </td>
+    <td width="50%" align="center">
+      <h3>🗞️ Paper Under Review</h3>
+      <b>Title:</b> Design and Development of a Vision-Guided Autonomous Fruit Gleaning and Sorting Robot for Orchard Health Monitoring<br><br>
+      <b>Journal:</b> Journal of Automation, Mobile Robotics and Intelligent Systems <a href="https://www.jamris.org">(JAMRIS)</a><br>
+      <b>Manuscript ID:</b> ID2185<br>
+      <b>Submitted:</b> June 2026
+    </td>
+  </tr>
+</table>
+
+---
 ## System Architecture
 
 ```
@@ -61,7 +86,7 @@ Pi Camera Module 3
                     ┌─────────┴─────────┐
                     ▼                   ▼
                LEFT BIN            RIGHT BIN
-           (ripe, half_ripe)   (overripe, rot,
+           (ripe, half ripe)   (overripe, rot,
                                 diseased, unripe)
 ```
 
